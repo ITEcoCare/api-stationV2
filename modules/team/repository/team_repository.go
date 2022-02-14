@@ -2,8 +2,8 @@ package repository
 
 import (
 	"api-station/models"
+	"api-station/modules/team"
 	"api-station/response"
-	"api-station/team"
 	"fmt"
 	"log"
 

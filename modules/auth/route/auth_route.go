@@ -1,9 +1,9 @@
 package route
 
 import (
-	_controllerAuth "api-station/auth/controller"
-	_serviceAuth "api-station/auth/service"
-	_repositoryUser "api-station/user/repository"
+	_controllerAuth "api-station/modules/auth/controller"
+	_serviceAuth "api-station/modules/auth/service"
+	_repositoryUser "api-station/modules/user/repository"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"

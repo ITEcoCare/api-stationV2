@@ -1,9 +1,10 @@
 package web
 
 import (
-	_controllerTeam "api-station/team/controller"
-	_repositoryTeam "api-station/team/repository"
-	_serviceTeam "api-station/team/service"
+	_authMiddleware "api-station/middleware"
+	_controllerTeam "api-station/modules/team/controller"
+	_repositoryTeam "api-station/modules/team/repository"
+	_serviceTeam "api-station/modules/team/service"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
@@ -15,9 +16,9 @@ func TeamRoute(r *gin.Engine, db *gorm.DB) {
 	serviceTeam := _serviceTeam.NewTeamService(repositoryTeam)
 	controllerTeam := _controllerTeam.NewTeamController(serviceTeam)
 
-	// authMiddleware := _authMiddleware.AuthMiddleware(serviceTeam)
+	authMiddleware := _authMiddleware.AuthMiddleware(db)
 
-	userTeam := r.Group("/api/v1/team")
+	userTeam := r.Group("/api/v1/team").Use(authMiddleware)
 	{
 		userTeam.POST("/create", controllerTeam.Create)
 		userTeam.GET("/read", controllerTeam.Read)

@@ -1,9 +1,9 @@
 package auth
 
 import (
-	"api-station/auth"
 	"api-station/helpers"
 	"api-station/models"
+	"api-station/modules/auth"
 	"api-station/request"
 	"log"
 	"net/http"

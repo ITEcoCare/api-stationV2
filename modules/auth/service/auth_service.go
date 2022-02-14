@@ -3,9 +3,9 @@ package service
 import (
 	"api-station/helpers"
 	"api-station/models"
+	"api-station/modules/user"
 	"api-station/request"
 	"api-station/response"
-	"api-station/user"
 	"log"
 	"time"
 

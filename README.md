@@ -12,3 +12,6 @@ https://github.com/dgrijalva/jwt-go
 
 ## Postman
 https://www.getpostman.com/collections/bf98e640df4001aa7092
+
+## run project
+go run main.go

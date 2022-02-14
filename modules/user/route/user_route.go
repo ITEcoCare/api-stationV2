@@ -2,9 +2,9 @@ package web
 
 import (
 	_authMiddleware "api-station/middleware"
-	_controllerUser "api-station/user/controller"
-	_repositoryUser "api-station/user/repository"
-	_serviceUser "api-station/user/service"
+	_controllerUser "api-station/modules/user/controller"
+	_repositoryUser "api-station/modules/user/repository"
+	_serviceUser "api-station/modules/user/service"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"

@@ -34,7 +34,7 @@ func AuthMiddleware(db *gorm.DB) gin.HandlerFunc {
 		token, err := helpers.ValidateToken(tokenString)
 
 		if err != nil {
-			res := response.Response{Success: false, Message: "Unauthorized2"}
+			res := response.Response{Success: false, Message: "Invalid Token"}
 			c.AbortWithStatusJSON(http.StatusUnauthorized, res)
 			return
 		}

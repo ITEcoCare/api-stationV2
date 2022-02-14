@@ -3,8 +3,8 @@ package controller
 import (
 	"api-station/helpers"
 	"api-station/models"
+	"api-station/modules/team"
 	"api-station/request"
-	"api-station/team"
 	"log"
 	"net/http"
 	"strconv"

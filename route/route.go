@@ -1,9 +1,9 @@
 package route
 
 import (
-	_authRoute "api-station/auth/route"
-	_teamRoute "api-station/team/route"
-	_userRoute "api-station/user/route"
+	_authRoute "api-station/modules/auth/route"
+	_teamRoute "api-station/modules/team/route"
+	_userRoute "api-station/modules/user/route"
 	"os"
 
 	"github.com/gin-contrib/cors"

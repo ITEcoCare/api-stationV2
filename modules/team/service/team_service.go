@@ -2,9 +2,9 @@ package service
 
 import (
 	"api-station/models"
+	"api-station/modules/team"
 	"api-station/request"
 	"api-station/response"
-	"api-station/team"
 	"log"
 )
 
