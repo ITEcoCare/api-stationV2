@@ -10,5 +10,5 @@ https://github.com/dgrijalva/jwt-go
 ## Config Database
  - sesuai kan database pada file .env
 
-## Postmant
+## Postman
 https://www.getpostman.com/collections/bf98e640df4001aa7092
