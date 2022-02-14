@@ -20,7 +20,7 @@ func AuthMiddleware(db *gorm.DB) gin.HandlerFunc {
 		authHeader := c.GetHeader("Authorization")
 
 		if !strings.Contains(authHeader, "Bearer") {
-			res := response.Response{Success: false, Message: "Unauthorized1"}
+			res := response.Response{Success: false, Message: "Unauthorized"}
 			c.AbortWithStatusJSON(http.StatusUnauthorized, res)
 			return
 		}
@@ -34,14 +34,14 @@ func AuthMiddleware(db *gorm.DB) gin.HandlerFunc {
 		token, err := helpers.ValidateToken(tokenString)
 
 		if err != nil {
-			res := response.Response{Success: false, Message: "Invalid Token"}
+			res := response.Response{Success: false, Message: "Unauthorized, Invalid Token"}
 			c.AbortWithStatusJSON(http.StatusUnauthorized, res)
 			return
 		}
 
 		claim, ok := token.Claims.(jwt.MapClaims)
 		if !ok || !token.Valid {
-			res := response.Response{Success: false, Message: "Unauthorized3"}
+			res := response.Response{Success: false, Message: "Unauthorized, Invalid Token2"}
 			c.AbortWithStatusJSON(http.StatusUnauthorized, res)
 			return
 		}

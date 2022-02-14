@@ -57,7 +57,7 @@ func (s *teamService) ReadById(Id int) response.Response {
 
 	resData := resultTeam.Result.(models.Team)
 
-	return response.Response{Success: true, Message: "User Detail", Data: resData}
+	return response.Response{Success: true, Message: "Team Detail", Data: resData}
 }
 
 func (s *teamService) Update(request models.Team) response.Response {
@@ -80,15 +80,9 @@ func (s *teamService) Update(request models.Team) response.Response {
 		return response.Response{Success: false, Message: resultUserUpdated.Error.Error()}
 	}
 
-	resData := resultUserUpdated.Result.(models.Team)
+	resData := resultUserUpdated.Result.(models.Role)
 
-	resultUserDetail := s.teamRepository.FindById(resData.ID)
-
-	if resultUserDetail.Error != nil {
-		return response.Response{Success: false, Message: resultUserDetail.Error.Error()}
-	}
-
-	return response.Response{Success: true, Message: "Team Updated", Data: resultUserDetail.Result}
+	return response.Response{Success: true, Message: "Team Updated", Data: resData}
 
 }
 
@@ -127,24 +121,16 @@ func (s *teamService) Trash() response.Response {
 
 func (s *teamService) Restore(Id int) response.Response {
 
-	getUserTrash := s.teamRepository.FindSingleTrashedById(Id)
-	if getUserTrash.Error != nil {
-		return response.Response{Success: false, Message: getUserTrash.Error.Error()}
+	resultTeamExist := s.teamRepository.FindSingleTrashedById(Id)
+	if resultTeamExist.Error != nil {
+		return response.Response{Success: false, Message: resultTeamExist.Error.Error()}
 	}
 
-	resultUserTrash := s.teamRepository.Restore(Id)
+	resultTeamTrash := s.teamRepository.Restore(Id)
 
-	if resultUserTrash.Error != nil {
-		return response.Response{Success: false, Message: resultUserTrash.Error.Error()}
+	if resultTeamTrash.Error != nil {
+		return response.Response{Success: false, Message: resultTeamTrash.Error.Error()}
 	}
 
-	resultUser := s.teamRepository.FindById(Id)
-
-	if resultUser.Error != nil {
-		return response.Response{Success: false, Message: resultUser.Error.Error()}
-	}
-
-	resData := resultUser.Result.(models.Team)
-
-	return response.Response{Success: true, Message: "Team data has been restore", Data: resData}
+	return response.Response{Success: true, Message: "Team data has been restore", Data: Id}
 }

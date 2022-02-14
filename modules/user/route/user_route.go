@@ -18,15 +18,15 @@ func UserRoute(r *gin.Engine, db *gorm.DB) {
 
 	authMiddleware := _authMiddleware.AuthMiddleware(db)
 
-	userAdmin := r.Group("/api/v1/user").Use(authMiddleware)
+	userRoute := r.Group("/api/v1/user").Use(authMiddleware)
 	{
-		userAdmin.POST("/create", controllerUser.Create)
-		userAdmin.GET("/read", controllerUser.Read)
-		userAdmin.GET("/read/:id", controllerUser.ReadById)
-		userAdmin.PUT("/update", controllerUser.Update)
-		userAdmin.POST("/delete", controllerUser.Delete)
-		userAdmin.GET("/trash", controllerUser.Trash)
-		userAdmin.POST("/restore", controllerUser.Restore)
+		userRoute.POST("/create", controllerUser.Create)
+		userRoute.GET("/read", controllerUser.Read)
+		userRoute.GET("/read/:id", controllerUser.ReadById)
+		userRoute.PUT("/update", controllerUser.Update)
+		userRoute.POST("/delete", controllerUser.Delete)
+		userRoute.GET("/trash", controllerUser.Trash)
+		userRoute.POST("/restore", controllerUser.Restore)
 		// userAdmin.POST("/upload_avatar", handler.UploadAvatar)
 		// userAdmin.POST("/restore", handler.RestoreUser)
 	}

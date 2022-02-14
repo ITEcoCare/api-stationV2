@@ -14,11 +14,11 @@ func AuthRoute(r *gin.Engine, db *gorm.DB) {
 	repositoryUser := _repositoryUser.NewrepositoryUser(db)
 	serviceAuth := _serviceAuth.NewAuthService(repositoryUser)
 	controllerAuth := _controllerAuth.NewAuthController(serviceAuth)
-	auth := r.Group("/api/v1/auth")
+	authRoute := r.Group("/api/v1/auth")
 	{
-		auth.POST("/login", controllerAuth.Login)
-		auth.POST("/register", controllerAuth.Register)
-		auth.POST("/email_check", controllerAuth.CheckEmailAvailability)
-		auth.POST("/username_check", controllerAuth.CheckUsernameAvailability)
+		authRoute.POST("/login", controllerAuth.Login)
+		authRoute.POST("/register", controllerAuth.Register)
+		authRoute.POST("/email_check", controllerAuth.CheckEmailAvailability)
+		authRoute.POST("/username_check", controllerAuth.CheckUsernameAvailability)
 	}
 }

@@ -215,13 +215,5 @@ func (s *userService) Restore(Id int) response.Response {
 		return response.Response{Success: false, Message: resultUserTrash.Error.Error()}
 	}
 
-	resultUser := s.userRepository.FindByIdWithRelation(Id)
-
-	if resultUser.Error != nil {
-		return response.Response{Success: false, Message: resultUser.Error.Error()}
-	}
-
-	resData := resultUser.Result.(models.User)
-
-	return response.Response{Success: true, Message: "User data has been restore", Data: resData}
+	return response.Response{Success: true, Message: "User data has been restore", Data: Id}
 }

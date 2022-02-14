@@ -2,6 +2,7 @@ package route
 
 import (
 	_authRoute "api-station/modules/auth/route"
+	_roleRoute "api-station/modules/role/route"
 	_teamRoute "api-station/modules/team/route"
 	_userRoute "api-station/modules/user/route"
 	"os"
@@ -28,8 +29,9 @@ func SetupRoute(db *gorm.DB) {
 
 	// Route Web
 	_authRoute.AuthRoute(r, db)
-	_userRoute.UserRoute(r, db)
 	_teamRoute.TeamRoute(r, db)
+	_roleRoute.RoleRoute(r, db)
+	_userRoute.UserRoute(r, db)
 
 	r.Run(":" + os.Getenv("APP_PORT"))
 

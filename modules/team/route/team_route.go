@@ -18,14 +18,14 @@ func TeamRoute(r *gin.Engine, db *gorm.DB) {
 
 	authMiddleware := _authMiddleware.AuthMiddleware(db)
 
-	userTeam := r.Group("/api/v1/team").Use(authMiddleware)
+	teamRoute := r.Group("/api/v1/team").Use(authMiddleware)
 	{
-		userTeam.POST("/create", controllerTeam.Create)
-		userTeam.GET("/read", controllerTeam.Read)
-		userTeam.GET("/read/:id", controllerTeam.ReadById)
-		userTeam.PUT("/update", controllerTeam.Update)
-		userTeam.POST("/delete", controllerTeam.Delete)
-		userTeam.GET("/trash", controllerTeam.Trash)
-		userTeam.POST("/restore", controllerTeam.Restore)
+		teamRoute.POST("/create", controllerTeam.Create)
+		teamRoute.GET("/read", controllerTeam.Read)
+		teamRoute.GET("/read/:id", controllerTeam.ReadById)
+		teamRoute.PUT("/update", controllerTeam.Update)
+		teamRoute.POST("/delete", controllerTeam.Delete)
+		teamRoute.GET("/trash", controllerTeam.Trash)
+		teamRoute.POST("/restore", controllerTeam.Restore)
 	}
 }
