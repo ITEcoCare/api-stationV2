@@ -98,16 +98,16 @@ func (uC teamController) Update(c *gin.Context) {
 func (uC teamController) Delete(c *gin.Context) {
 	log.Print("[teamController]... Delete")
 
-	var requestId request.RequestId
+	var request request.RequestIdteam
 
-	err := c.ShouldBindJSON(&requestId)
+	err := c.ShouldBindJSON(&request)
 	if err != nil {
 		res := helpers.ValidationInputResponse(err)
 		c.JSON(http.StatusBadRequest, res)
 		return
 	}
 
-	res := uC.teamService.Delete(requestId)
+	res := uC.teamService.Delete(request.ID)
 
 	code := http.StatusOK
 	if !res.Success {
@@ -133,16 +133,16 @@ func (uC teamController) Trash(c *gin.Context) {
 func (uC teamController) Restore(c *gin.Context) {
 	log.Print("[teamController]... Restore")
 
-	var requestId request.RequestId
+	var request request.RequestIdteam
 
-	err := c.ShouldBindJSON(&requestId)
+	err := c.ShouldBindJSON(&request)
 	if err != nil {
 		res := helpers.ValidationInputResponse(err)
 		c.JSON(http.StatusBadRequest, res)
 		return
 	}
 
-	res := uC.teamService.Restore(requestId.ID)
+	res := uC.teamService.Restore(request.ID)
 
 	code := http.StatusOK
 	if !res.Success {

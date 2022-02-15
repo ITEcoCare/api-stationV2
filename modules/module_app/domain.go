@@ -1,4 +1,4 @@
-package role
+package module_app
 
 import (
 	"api-station/models"
@@ -6,21 +6,21 @@ import (
 )
 
 type IRepository interface {
-	Save(role models.Role) response.RepositoryResult
+	Save(module models.ModuleApp) response.RepositoryResult
 	FindAll() response.RepositoryResult
 	FindById(Id int) response.RepositoryResult
-	Update(role models.Role) response.RepositoryResult
-	SoftDelete(role models.Role) response.RepositoryResult
+	Update(module models.ModuleApp) response.RepositoryResult
+	SoftDelete(module models.ModuleApp) response.RepositoryResult
 	FindAllWithTrashed() response.RepositoryResult
 	FindSingleTrashedById(Id int) response.RepositoryResult
 	Restore(Id int) response.RepositoryResult
 }
 
 type IService interface {
-	Create(role models.Role) response.Response
+	Create(module models.ModuleApp) response.Response
 	Read() response.Response
 	ReadById(Id int) response.Response
-	Update(role models.Role) response.Response
+	Update(module models.ModuleApp) response.Response
 	Delete(Id int) response.Response
 	Trash() response.Response
 	Restore(Id int) response.Response

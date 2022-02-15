@@ -1,4 +1,4 @@
-package role
+package permission
 
 import (
 	"api-station/models"
@@ -6,21 +6,21 @@ import (
 )
 
 type IRepository interface {
-	Save(role models.Role) response.RepositoryResult
+	Save(permission models.Permission) response.RepositoryResult
 	FindAll() response.RepositoryResult
 	FindById(Id int) response.RepositoryResult
-	Update(role models.Role) response.RepositoryResult
-	SoftDelete(role models.Role) response.RepositoryResult
+	Update(permission models.Permission) response.RepositoryResult
+	SoftDelete(permission models.Permission) response.RepositoryResult
 	FindAllWithTrashed() response.RepositoryResult
 	FindSingleTrashedById(Id int) response.RepositoryResult
 	Restore(Id int) response.RepositoryResult
 }
 
 type IService interface {
-	Create(role models.Role) response.Response
+	Create(permission models.Permission) response.Response
 	Read() response.Response
 	ReadById(Id int) response.Response
-	Update(role models.Role) response.Response
+	Update(permission models.Permission) response.Response
 	Delete(Id int) response.Response
 	Trash() response.Response
 	Restore(Id int) response.Response

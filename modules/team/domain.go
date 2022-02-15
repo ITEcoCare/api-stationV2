@@ -2,7 +2,6 @@ package team
 
 import (
 	"api-station/models"
-	"api-station/request"
 	"api-station/response"
 )
 
@@ -22,7 +21,7 @@ type IService interface {
 	Read() response.Response
 	ReadById(Id int) response.Response
 	Update(team models.Team) response.Response
-	Delete(requestId request.RequestId) response.Response
+	Delete(Id int) response.Response
 	Trash() response.Response
 	Restore(Id int) response.Response
 }

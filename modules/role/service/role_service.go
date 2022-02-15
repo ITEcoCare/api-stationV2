@@ -3,7 +3,6 @@ package service
 import (
 	"api-station/models"
 	"api-station/modules/role"
-	"api-station/request"
 	"api-station/response"
 	"log"
 )
@@ -86,10 +85,10 @@ func (s *roleService) Update(request models.Role) response.Response {
 
 }
 
-func (s *roleService) Delete(requestId request.RequestId) response.Response {
+func (s *roleService) Delete(Id int) response.Response {
 	log.Print("[roleService]...Delete")
 
-	resultRoleExist := s.ReadById(requestId.ID)
+	resultRoleExist := s.ReadById(Id)
 
 	if !resultRoleExist.Success {
 		return resultRoleExist

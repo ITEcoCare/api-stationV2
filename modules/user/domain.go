@@ -2,7 +2,6 @@ package user
 
 import (
 	"api-station/models"
-	"api-station/request"
 	"api-station/response"
 )
 
@@ -28,7 +27,7 @@ type IService interface {
 	ReadByUsername(username string) response.Response
 	ReadByIdWithRelation(Id int) response.Response
 	Update(user models.User) response.Response
-	Delete(requestId request.RequestId) response.Response
+	Delete(Id int) response.Response
 	Trash() response.Response
 	Restore(Id int) response.Response
 }

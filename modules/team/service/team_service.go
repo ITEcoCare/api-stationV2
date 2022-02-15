@@ -3,7 +3,6 @@ package service
 import (
 	"api-station/models"
 	"api-station/modules/team"
-	"api-station/request"
 	"api-station/response"
 	"log"
 )
@@ -86,10 +85,10 @@ func (s *teamService) Update(request models.Team) response.Response {
 
 }
 
-func (s *teamService) Delete(requestId request.RequestId) response.Response {
+func (s *teamService) Delete(Id int) response.Response {
 	log.Print("[teamService]...Delete")
 
-	resultTeamExist := s.ReadById(requestId.ID)
+	resultTeamExist := s.ReadById(Id)
 
 	if !resultTeamExist.Success {
 		return resultTeamExist

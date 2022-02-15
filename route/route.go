@@ -2,6 +2,8 @@ package route
 
 import (
 	_authRoute "api-station/modules/auth/route"
+	_moduleAppRoute "api-station/modules/module_app/route"
+	_permissionRoute "api-station/modules/permission/route"
 	_roleRoute "api-station/modules/role/route"
 	_teamRoute "api-station/modules/team/route"
 	_userRoute "api-station/modules/user/route"
@@ -31,8 +33,9 @@ func SetupRoute(db *gorm.DB) {
 	_authRoute.AuthRoute(r, db)
 	_teamRoute.TeamRoute(r, db)
 	_roleRoute.RoleRoute(r, db)
+	_moduleAppRoute.ModuleAppRoute(r, db)
 	_userRoute.UserRoute(r, db)
-
+	_permissionRoute.PermissionRoute(r, db)
 	r.Run(":" + os.Getenv("APP_PORT"))
 
 	gin.SetMode(gin.DebugMode)

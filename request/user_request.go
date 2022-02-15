@@ -1,6 +1,6 @@
 package request
 
-type RequestId struct {
+type RequestIdUser struct {
 	ID int `uri:"id" binding:"required,number"`
 }
 

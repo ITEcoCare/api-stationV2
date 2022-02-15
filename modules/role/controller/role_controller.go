@@ -98,16 +98,16 @@ func (uC roleController) Update(c *gin.Context) {
 func (uC roleController) Delete(c *gin.Context) {
 	log.Print("[roleController]... Delete")
 
-	var requestId request.RequestId
+	var request request.RequestIdRole
 
-	err := c.ShouldBindJSON(&requestId)
+	err := c.ShouldBindJSON(&request)
 	if err != nil {
 		res := helpers.ValidationInputResponse(err)
 		c.JSON(http.StatusBadRequest, res)
 		return
 	}
 
-	res := uC.roleService.Delete(requestId)
+	res := uC.roleService.Delete(request.ID)
 
 	code := http.StatusOK
 	if !res.Success {
@@ -133,16 +133,16 @@ func (uC roleController) Trash(c *gin.Context) {
 func (uC roleController) Restore(c *gin.Context) {
 	log.Print("[roleController]... Restore")
 
-	var requestId request.RequestId
+	var request request.RequestIdUser
 
-	err := c.ShouldBindJSON(&requestId)
+	err := c.ShouldBindJSON(&request)
 	if err != nil {
 		res := helpers.ValidationInputResponse(err)
 		c.JSON(http.StatusBadRequest, res)
 		return
 	}
 
-	res := uC.roleService.Restore(requestId.ID)
+	res := uC.roleService.Restore(request.ID)
 
 	code := http.StatusOK
 	if !res.Success {

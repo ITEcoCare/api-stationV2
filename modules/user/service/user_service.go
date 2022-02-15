@@ -3,7 +3,6 @@ package service
 import (
 	"api-station/models"
 	"api-station/modules/user"
-	"api-station/request"
 	"api-station/response"
 	"log"
 	"time"
@@ -169,10 +168,10 @@ func (s *userService) Update(request models.User) response.Response {
 
 }
 
-func (s *userService) Delete(requestId request.RequestId) response.Response {
+func (s *userService) Delete(Id int) response.Response {
 	log.Print("[userService]...Delete")
 
-	existUserResponse := s.ReadById(requestId.ID)
+	existUserResponse := s.ReadById(Id)
 
 	if !existUserResponse.Success {
 		return existUserResponse
