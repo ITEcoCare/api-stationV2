@@ -61,7 +61,7 @@ func (s *authService) Register(request models.User) response.Response {
 
 	user := models.User{}
 	user.RoleId = request.RoleId
-	user.TeamId = request.TeamId
+	// user.TeamId = request.TeamId
 	user.Name = request.Name
 	user.Username = request.Username
 	user.Email = request.Email

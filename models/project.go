@@ -8,10 +8,8 @@ import (
 
 type Project struct {
 	ID            int `gorm:"primary_key" json:"id"`
-	BranchId      int `gorm:"type:int;NOT NULL" json:"branch_id" binding:"required"`
-	Branch        Branch
 	CustomerId    int `gorm:"type:int;NOT NULL" json:"customer_id" binding:"required"`
-	Customer      Customer
+	Customer      *Customer
 	Status        int            `gorm:"type:smallint; default:0; comment:0 = draft, 1 = complete, 2 = on_going, 3 = terminate, 4 = out_of_date" json:"status"`
 	ProjectName   string         `gorm:"type:varchar(200); NOT NULL" json:"project_name" binding:"required"`
 	ProjectNumber string         `gorm:"type:varchar(200); NOT NULL" json:"project_number" binding:"required"`

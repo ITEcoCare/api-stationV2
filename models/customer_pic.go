@@ -9,11 +9,11 @@ import (
 type CustomerPic struct {
 	ID         int `gorm:"primary_key" json:"id"`
 	CustomerId int `gorm:"type:int;NOT NULL" json:"customer_id" binding:"required"`
-	Customer   Customer
+	Customer   *Customer
 	ProvinceId int `gorm:"type:int;NOT NULL" json:"province_id" binding:"required"`
-	Province   Province
+	Province   *Province
 	CityId     int `gorm:"type:int;NOT NULL" json:"city_id" binding:"required"`
-	City       City
+	City       *City
 	DistrictId int            `gorm:"type:int;NOT NULL" json:"district_id" binding:"required"`
 	Name       string         `gorm:"type:varchar(255);NOT NULL" json:"name" binding:"required"`
 	Address    string         `gorm:"type:text; NOT NULL" json:"address"`

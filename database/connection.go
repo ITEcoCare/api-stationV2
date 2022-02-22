@@ -28,21 +28,19 @@ func DBCon() *gorm.DB {
 	}
 
 	db.AutoMigrate(
-		models.User{},
-		models.Role{},
-		models.Team{},
-		models.Permission{},
-		models.ModuleApp{},
-		models.ModulePermission{},
 		models.Province{},
 		models.City{},
 		models.District{},
 		models.Village{},
-		models.Warehouse{},
-		models.Branch{},
-		models.JobPosition{},
 		models.IdentityCard{},
 		models.Bank{},
+		models.Company{},
+		models.Branch{},
+		models.Warehouse{},
+		models.Team{},
+		models.Role{},
+		models.JobPosition{},
+		models.User{},
 		models.Employee{},
 		models.EmployeeAddress{},
 		models.EmployeeEducation{},
@@ -62,6 +60,9 @@ func DBCon() *gorm.DB {
 		models.ProjectTop{},
 		models.ProjectInvoice{},
 		models.ProjectPaymentReceive{},
+		// models.Permission{},
+		// models.ModuleApp{},
+		// models.ModulePermission{},
 	)
 
 	return db

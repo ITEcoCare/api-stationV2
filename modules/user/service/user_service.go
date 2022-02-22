@@ -26,7 +26,7 @@ func (s *userService) Create(request models.User) response.Response {
 
 	user := models.User{}
 	user.RoleId = request.RoleId
-	user.TeamId = request.TeamId
+	// user.TeamId = request.TeamId
 	user.Name = request.Name
 	user.Username = request.Username
 	user.Email = request.Email
@@ -137,7 +137,7 @@ func (s *userService) Update(request models.User) response.Response {
 	timeNow := time.Date(t.Year(), t.Month(), t.Day(), t.Hour(), t.Minute(), t.Second(), t.Nanosecond(), t.Location())
 
 	existUser.RoleId = request.RoleId
-	existUser.TeamId = request.TeamId
+	// existUser.TeamId = request.TeamId
 	existUser.Name = request.Name
 	existUser.Username = request.Username
 	existUser.Email = request.Email

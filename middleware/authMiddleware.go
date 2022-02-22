@@ -4,6 +4,7 @@ import (
 	"api-station/helpers"
 	"api-station/models"
 	"api-station/response"
+	"fmt"
 
 	// "api-station/user"
 	"net/http"
@@ -49,7 +50,7 @@ func AuthMiddleware(db *gorm.DB) gin.HandlerFunc {
 		userId := int(claim["user_id"].(float64))
 		var user models.User
 		// user := userService.ReadById(userId)
-		result := db.Where("id = ?", userId).First(&user).Error
+		result := db.Preload("Role").Preload("Team").Where("id = ?", userId).First(&user).Error
 		if result != nil {
 			res := response.Response{Success: false, Message: "Unauthorized"}
 			c.AbortWithStatusJSON(http.StatusUnauthorized, res)
@@ -57,5 +58,15 @@ func AuthMiddleware(db *gorm.DB) gin.HandlerFunc {
 		}
 
 		c.Set("currentUser", user)
+	}
+}
+
+func PermissionMiddleware(permissionName string, db *gorm.DB) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		currentUser := c.MustGet("currentUser").(models.User)
+		fmt.Println("PermissionMiddleware")
+		fmt.Println(currentUser)
+		fmt.Println(currentUser.Role)
+		// fmt.Println(currentUser.Team)
 	}
 }

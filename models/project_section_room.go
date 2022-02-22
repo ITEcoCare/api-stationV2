@@ -7,7 +7,7 @@ import (
 type ProjectSectionRoom struct {
 	ID        int `gorm:"primary_key" json:"id"`
 	ProjectId int `gorm:"type:int; NOT NULL" json:"project_id" binding:"required"`
-	Project   Project
+	Project   *Project
 	Area      string    `gorm:"type:varchar(255);NOT NULL" json:"area" binding:"required"`
 	Name      string    `gorm:"type:varchar(255);NOT NULL" json:"name" binding:"required"`
 	Noted     string    `gorm:"type:varchar(255);" json:"noted" binding:"required"`

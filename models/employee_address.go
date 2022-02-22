@@ -7,13 +7,13 @@ import (
 type EmployeeAddress struct {
 	ID         int `gorm:"primary_key" json:"id"`
 	EmployeeId int `gorm:"type:int;NOT NULL" json:"employee_id"`
-	Employee   Employee
+	Employee   *Employee
 	ProvinceId int `gorm:"type:int;NOT NULL" json:"province_id"`
-	Province   Province
+	Province   *Province
 	CityId     int `gorm:"type:int;NOT NULL" json:"city_id"`
-	City       City
+	City       *City
 	DistrictId int `gorm:"type:int;NOT NULL" json:"district_id"`
-	District   District
+	District   *District
 	Address    string    `gorm:"type:text;" json:"address"`
 	Latitude   string    `gorm:"type:varchar(200);" json:"latitude"`
 	Longitude  string    `gorm:"type:varchar(200);" json:"longitude"`
